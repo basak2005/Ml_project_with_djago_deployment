@@ -1,0 +1,180 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Register Form</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://public.codepenassets.com/css/normalize-5.0.0.min.css">
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <script src="https://public.codepenassets.com/js/prefixfree-1.0.7.min.js"></script>
+  <style>
+    /* Work with original animation system - fit form in original space */
+    .center {
+      /* Remove scroll and flexbox - use original layout */
+      overflow: visible !important;
+      max-height: none !important;
+      height: 400px !important;
+      padding: 15px !important;
+      /* Remove flex to preserve original center layout */
+      display: block !important;
+      /* Ensure content stays centered */
+      justify-content: center !important;
+      align-items: center !important;
+    }
+    
+    /* Hide scrollbar for webkit browsers */
+    .center::-webkit-scrollbar {
+      width: 4px;
+    }
+    
+    .center::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    
+    .center::-webkit-scrollbar-thumb {
+      background: rgba(228, 101, 105, 0.5);
+      border-radius: 2px;
+    }
+    
+    .center h2 {
+      margin-bottom: 5px !important;
+      font-size: 16px !important;
+    }
+    
+    .center input {
+      margin: 3px 0 !important;
+      padding: 8px !important;
+      font-size: 12px !important;
+      height: 32px !important;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    
+    /* Adjust button styling to fit */
+    .center button {
+      margin-top: 8px !important;
+      padding: 8px 20px !important;
+      font-size: 12px !important;
+      height: 32px !important;
+    }
+    
+    /* Compact subtitle */
+    .center p:first-of-type {
+      margin-bottom: 5px !important;
+      font-size: 10px !important;
+    }
+    
+    /* Remove flex from form - use original layout */
+    .center form {
+      /* Remove flex overrides */
+    }
+    
+    /* Alert styling */
+    .alert {
+      padding: 6px 10px;
+      margin: 8px 0;
+      border-radius: 4px;
+      font-size: 11px;
+    }
+    
+    .alert-error {
+      background-color: rgba(255, 238, 238, 0.9);
+      color: #c33;
+      border: 1px solid #fcc;
+    }
+    
+    .alert-success {
+      background-color: rgba(238, 255, 238, 0.9);
+      color: #363;
+      border: 1px solid #cfc;
+    }
+    
+    /* Navigation button hover effects */
+    .center p a:hover {
+      transform: translateY(-2px) !important;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2) !important;
+    }
+    
+    /* Compact navigation area */
+    .center p:last-child {
+      margin-top: 8px !important;
+      margin-bottom: 0 !important;
+      padding: 8px 0 !important;
+    }
+    
+    /* Center the entire form content */
+    .center {
+      text-align: center !important;
+    }
+    
+    .center form {
+      margin: 0 auto !important;
+    }
+    
+    /* Remove flex to preserve original center layout */
+  </style>
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="container" onclick="onclick">
+  <div class="top"></div>
+  <div class="bottom"></div>
+  <div class="center">
+    <h2>REGISTER</h2>
+    <p style="color: #ccc; font-size: 12px; text-align: center; margin-bottom: 10px;">
+      Create account to access ML property predictor
+    </p>
+    
+    {% if messages %}
+      {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+      {% endfor %}
+    {% endif %}
+    
+    <form method="post">
+      {% csrf_token %}
+      
+      <!-- Personal Information -->
+      <input name="name" type="text" placeholder="Full Name *" required/>
+      <input name="email" type="email" placeholder="Email Address *" required/>
+      
+      <!-- Contact Information -->
+      <input name="address" type="text" placeholder="Address (Optional)"/>
+      <input name="phone" type="tel" placeholder="Phone Number (Optional)"/>
+      
+      <!-- Account Credentials -->
+      <input name="username" type="text" placeholder="Username *" required/>
+      <input name="password" type="password" placeholder="Password (min 6 chars) *" required/>
+      
+      <button type="submit" style="background: #e46569; color: white; border: none; border-radius: 6px; cursor: pointer; width: 100%; transition: all 0.3s ease; font-weight: 500;">
+        CREATE ACCOUNT
+      </button>
+    </form>
+    
+    <!-- Navigation Separator -->
+    
+    <p style="text-align: center; margin-top: 8px; line-height: 1.3; padding: 8px 0;">
+      <a href="{% url 'login' %}" style="color: white; text-decoration: none; font-weight: 600; display: inline-block; background: #e46569; padding: 6px 16px; border-radius: 18px; margin: 3px 6px; transition: all 0.3s ease; font-size: 12px; box-shadow: 0 2px 6px rgba(228, 101, 105, 0.4);">
+        <i class="fas fa-sign-in-alt"></i> Login
+      </a>
+      
+      <a href="{% url 'landing' %}" style="color: white; text-decoration: none; font-size: 12px; display: inline-block; background: rgba(100, 100, 100, 0.9); padding: 6px 16px; border-radius: 18px; margin: 3px 6px; transition: all 0.3s ease; box-shadow: 0 2px 6px rgba(0,0,0,0.3);">
+        <i class="fas fa-home"></i> Home
+      </a>
+    </p>
+  </div>
+</div>
+<!-- partial -->
+  <script src='https://codepen.io/banik/pen/ReNNrO/3f837b2f0085b5125112fc455941ea94.js'></script>
+  <script>
+    // Simple animation trigger - simulate hover immediately
+    window.addEventListener('load', function() {
+      const container = document.querySelector('.container');
+      // Trigger hover effect immediately
+      container.dispatchEvent(new Event('mouseenter'));
+    });
+  </script>
+</body>
+</html>
