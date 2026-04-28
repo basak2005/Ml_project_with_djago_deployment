@@ -128,9 +128,12 @@ Open: `http://127.0.0.1:8000/`
 - Add input normalization and validation for text features
 
 ## Screens (UI)
-- Landing page, login, and register screens
-- Predictor form with feature-specific guidance
-- Result page with model-by-model output
+![Screen 1](screenshots/Screenshot%202026-04-28%20080634.png)
 
-## License
-Add a license file if you plan to open-source this project.
+![Screen 2](screenshots/Screenshot%202026-04-28%20081314.png)
+
+![Screen 3](screenshots/Screenshot%202026-04-28%20081456.png)
+
+![Screen 4](screenshots/Screenshot%202026-04-28%20081547.png)
+
+
